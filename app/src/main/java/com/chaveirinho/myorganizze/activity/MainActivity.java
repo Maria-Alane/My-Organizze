@@ -1,4 +1,4 @@
-package com.chaveirinho.myorganizze;
+package com.chaveirinho.myorganizze.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.chaveirinho.myorganizze.R;
 import com.chaveirinho.myorganizze.activity.CadastroActivity;
 import com.chaveirinho.myorganizze.activity.LoginActivity;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;

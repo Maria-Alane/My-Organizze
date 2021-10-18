@@ -49,3 +49,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
