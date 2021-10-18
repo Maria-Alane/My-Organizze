@@ -42,15 +42,15 @@ public class LoginActivity extends AppCompatActivity {
                 String textoEmail = campoEmail.getText().toString();
                 String textoSenha = campoSenha.getText().toString();
 
-                usuario = new Usuario();
-                usuario.setEmail( textoEmail );
-                usuario.setSenha( textoSenha );
-                validarLogin();
 
+                //validar se os campos foram preenchidos
                 if ( !textoEmail.isEmpty() ){
                     if ( !textoSenha.isEmpty() ){
 
-
+                        usuario = new Usuario();
+                        usuario.setEmail( textoEmail );
+                        usuario.setSenha( textoSenha );
+                        validarLogin();
 
                     }else{
                         Toast.makeText(LoginActivity.this,
