@@ -28,7 +28,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
@@ -38,7 +38,15 @@ public class PrincipalActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
+    }
+
+    public void adicionarReceita(View view){
+
+    }
+
+    public void adicionarDespesa(View view){
+
     }
 
     @Override
