@@ -13,6 +13,24 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <!-- Tema aplicado nas despesas !-->
+    <style name="despesasTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorPrimary">@color/colorPrimaryDespesas</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDarkDespesas</item>
+        <item name="colorAccent">@color/colorAccentDespesas</item>
+    </style>
+
+    <!-- Tema aplicado nas receitas !-->
+    <style name="receitasTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorPrimary">@color/colorPrimaryReceitas</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDarkReceitas</item>
+        <item name="colorAccent">@color/colorAccentReceitas</item>
+    </style>
+
     <style name="Theme.MyOrganizze.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
