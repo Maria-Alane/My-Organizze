@@ -50,10 +50,4 @@ public class PrincipalActivity extends AppCompatActivity {
         startActivity(new Intent(this, DespesasActivity.class));
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 }
