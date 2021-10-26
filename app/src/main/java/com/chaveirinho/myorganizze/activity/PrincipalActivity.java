@@ -3,9 +3,11 @@ package com.chaveirinho.myorganizze.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.chaveirinho.myorganizze.adapter.AdapterMovimentacao;
 import com.chaveirinho.myorganizze.config.ConfiguracaoFirebase;
 import com.chaveirinho.myorganizze.databinding.ActivityPrincipalBinding;
 import com.chaveirinho.myorganizze.helper.Base64Costom;
+import com.chaveirinho.myorganizze.model.Movimentacao;
 import com.chaveirinho.myorganizze.model.Usuario;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -24,6 +26,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.chaveirinho.myorganizze.R;
@@ -37,6 +41,8 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -53,6 +59,10 @@ public class PrincipalActivity extends AppCompatActivity {
     private DatabaseReference usuarioRef;
     private ValueEventListener valueEventListenerUsuario;
 
+    private RecyclerView recyclerView;
+    private AdapterMovimentacao adapterMovimentacao;
+    private List<Movimentacao> movimentacaos = new ArrayList<>();
+
 
 
     @Override
@@ -65,9 +75,20 @@ public class PrincipalActivity extends AppCompatActivity {
      setSupportActionBar(binding.toolbar);
 
     textoSaudacao = findViewById(R.id.textSaudacao);
-    textoSaldo = findViewById(R.id.textSaldo);
-    calendarView = findViewById(R.id.calendarView);
+    textoSaldo    = findViewById(R.id.textSaldo);
+    calendarView  = findViewById(R.id.calendarView);
+    recyclerView  = findViewById(R.id.recyclerMovimento);
     configuraCalendarView();
+
+    //Configurar adapter
+     adapterMovimentacao = new AdapterMovimentacao(movimentacaos, this);
+
+   //Configurar RecyclerView
+   RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+   recyclerView.setLayoutManager(layoutManager);
+   recyclerView.setHasFixedSize(true);
+   recyclerView.setAdapter(adapterMovimentacao);
+
 
 
     }
