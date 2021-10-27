@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,27 +67,52 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-     binding = ActivityPrincipalBinding.inflate(getLayoutInflater());
-     setContentView(binding.getRoot());
-     binding.toolbar.setTitle("Organizze");
-     setSupportActionBar(binding.toolbar);
+         binding = ActivityPrincipalBinding.inflate(getLayoutInflater());
+         setContentView(binding.getRoot());
+         binding.toolbar.setTitle("Organizze");
+         setSupportActionBar(binding.toolbar);
 
-    textoSaudacao = findViewById(R.id.textSaudacao);
-    textoSaldo    = findViewById(R.id.textSaldo);
-    calendarView  = findViewById(R.id.calendarView);
-    recyclerView  = findViewById(R.id.recyclerMovimento);
-    configuraCalendarView();
+            textoSaudacao = findViewById(R.id.textSaudacao);
+            textoSaldo    = findViewById(R.id.textSaldo);
+            calendarView  = findViewById(R.id.calendarView);
+            recyclerView  = findViewById(R.id.recyclerMovimento);
+            configuraCalendarView();
+            swipe();
 
-    //Configurar adapter
-     adapterMovimentacao = new AdapterMovimentacao(movimentacoes, this);
+            //Configurar adapter
+             adapterMovimentacao = new AdapterMovimentacao(movimentacoes, this);
 
-   //Configurar RecyclerView
-   RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-   recyclerView.setLayoutManager(layoutManager);
-   recyclerView.setHasFixedSize(true);
-   recyclerView.setAdapter(adapterMovimentacao);
+           //Configurar RecyclerView
+           RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+           recyclerView.setLayoutManager(layoutManager);
+           recyclerView.setHasFixedSize(true);
+           recyclerView.setAdapter(adapterMovimentacao);
 
+    }
 
+    public void swipe(){
+
+        ItemTouchHelper.Callback itemTouch = new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+
+                int dragFlags = ItemTouchHelper.ACTION_STATE_IDLE;
+                int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+                return makeMovementFlags(dragFlags, swipeFlags);
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        };
+
+        new ItemTouchHelper(itemTouch).attachToRecyclerView(recyclerView);
 
     }
 
